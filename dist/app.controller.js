@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppController = void 0;
 const common_1 = require("@nestjs/common");
 const app_service_1 = require("./app.service");
+const ip_decorator_1 = require("./ip.decorator");
 let AppController = class AppController {
     constructor(appService) {
         this.appService = appService;
@@ -33,7 +34,7 @@ let AppController = class AppController {
 exports.AppController = AppController;
 __decorate([
     (0, common_1.Get)('view'),
-    __param(0, (0, common_1.Ip)()),
+    __param(0, (0, ip_decorator_1.RealIp)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", String)
@@ -45,15 +46,15 @@ __decorate([
     __metadata("design:returntype", String)
 ], AppController.prototype, "welcome", null);
 __decorate([
-    (0, common_1.Get)('live'),
+    (0, common_1.Get)('hello'),
     __param(0, (0, common_1.Query)()),
-    __param(1, (0, common_1.Ip)()),
+    __param(1, (0, ip_decorator_1.RealIp)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, String]),
     __metadata("design:returntype", Promise)
 ], AppController.prototype, "getQuery", null);
 exports.AppController = AppController = __decorate([
-    (0, common_1.Controller)(),
+    (0, common_1.Controller)('api'),
     __metadata("design:paramtypes", [app_service_1.AppService])
 ], AppController);
 //# sourceMappingURL=app.controller.js.map

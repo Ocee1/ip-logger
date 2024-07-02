@@ -14,6 +14,7 @@ async function bootstrap() {
       max: 100, 
     }) as any,
   );
+  // app.set('trust proxy', true);
   app.enableCors();
   // Apply CSRF protection middleware
   // app.use(csurf({ cookie: true }))

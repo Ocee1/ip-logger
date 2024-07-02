@@ -1,12 +1,13 @@
 import { Controller, Get, Ip, Query } from '@nestjs/common';
 import { AppService } from './app.service';
+import { RealIp } from './ip.decorator';
 
-@Controller()
+@Controller('api')
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get('view')
-  viewIP(@Ip() ip: string): String {
+  viewIP(@RealIp() ip: string): String {
     return `this page is active! ${ip}`
   }
 
@@ -15,8 +16,8 @@ export class AppController {
     return `this page is active!`
   }
 
-  @Get('live')
-  getQuery(@Query() query: any, @Ip() ip: string): Promise<any> {
+  @Get('hello')
+  getQuery(@Query() query: any, @RealIp() ip: string): Promise<any> {
     const name = query.visitor_name;
     return this.appService.getClient(name, ip);
   }
