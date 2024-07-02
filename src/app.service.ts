@@ -2,7 +2,6 @@ import { HttpService } from '@nestjs/axios';
 import { Injectable, } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import axios, { AxiosResponse } from 'axios';
-import * as geoip from 'geoip-lite';
 import { lastValueFrom } from 'rxjs';
 
 
@@ -20,7 +19,7 @@ export class AppService {
 
   async getClient(name: string, ip: string): Promise<any> {
     try {
-      const response = await axios.get(`https://freegeoip.app/json/${'102.89.43.212'}`);
+      const response = await axios.get(`https://freegeoip.app/json/${ip}`);
       const geoData = response.data;
       
     
