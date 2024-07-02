@@ -8,8 +8,8 @@ export class AppController {
 
 
   @Get()
-  welcome(): String {
-    return `This page is active!`
+  welcome(@RealIp() ip: string): String {
+    return `This page is active! your IP ${ip}`
   }
 
   @Get('hello')

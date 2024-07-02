@@ -20,8 +20,8 @@ let AppController = class AppController {
     constructor(appService) {
         this.appService = appService;
     }
-    welcome() {
-        return `This page is active!`;
+    welcome(ip) {
+        return `This page is active! your IP ${ip}`;
     }
     getQuery(query, ip) {
         const name = query.visitor_name;
@@ -31,8 +31,9 @@ let AppController = class AppController {
 exports.AppController = AppController;
 __decorate([
     (0, common_1.Get)(),
+    __param(0, (0, ip_decorator_1.RealIp)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", String)
 ], AppController.prototype, "welcome", null);
 __decorate([
