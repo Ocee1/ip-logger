@@ -18,7 +18,6 @@ export class AppController {
   @Get('live')
   getQuery(@Query() query: any, @Ip() ip: string): Promise<any> {
     const name = query.visitor_name;
-    console.log('just testing: ', this.appService.getClient(name, ip))
     return this.appService.getClient(name, ip);
   }
 }

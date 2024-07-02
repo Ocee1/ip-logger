@@ -1,7 +1,7 @@
 import { HttpService } from '@nestjs/axios';
 import { Injectable, } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { AxiosResponse } from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import * as geoip from 'geoip-lite';
 import { lastValueFrom } from 'rxjs';
 
@@ -20,15 +20,19 @@ export class AppService {
 
   async getClient(name: string, ip: string): Promise<any> {
     try {
-      const geo = geoip.lookup(ip);
-      if (!geo) {
+      const response = await axios.get(`https://freegeoip.app/json/${'102.89.43.212'}`);
+      const geoData = response.data;
+      
+    
+
+      if (!geoData) {
         throw new Error('Invalid IP address');
       }
       
       const weather_data: AxiosResponse<any> = await lastValueFrom(
         this.httpService.get(this.apiUrl, {
           params: {
-            q: geo.city,
+            q: geoData.city,
             appid: this.apiKey,
             units: 'metric'
           },
@@ -39,8 +43,8 @@ export class AppService {
 
       const data = {
         client_ip: ip,
-        location: geo.city,
-        greeting: `Hello, ${name}! The temperature is ${temp} Celsius in ${geo.city}`,
+        location: geoData.city,
+        greeting: `Hello, ${name}! The temperature is ${temp} Celsius in ${geoData.city}`,
       };
 
       return data;
