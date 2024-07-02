@@ -24,12 +24,13 @@ export class AppService {
       if (!geo) {
         throw new Error('Invalid IP address');
       }
-
+      
       const weather_data: AxiosResponse<any> = await lastValueFrom(
         this.httpService.get(this.apiUrl, {
           params: {
             q: geo.city,
             appid: this.apiKey,
+            units: 'metric'
           },
         }),
       );
