@@ -6,14 +6,10 @@ import { RealIp } from './ip.decorator';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get('view')
-  viewIP(@RealIp() ip: string): String {
-    return `this page is active! ${ip}`
-  }
 
   @Get()
   welcome(): String {
-    return `this page is active!`
+    return `This page is active!`
   }
 
   @Get('hello')
