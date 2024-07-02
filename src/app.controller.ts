@@ -13,8 +13,10 @@ export class AppController {
   }
 
   @Get('hello')
-  getQuery(@Query() query: any, @RealIp() ip: string): Promise<any> {
+  async getQuery(@Query() query: any, @RealIp() ip: string): Promise<any> {
+
     const name = query.visitor_name;
-    return this.appService.getClient(name, ip);
+    const result = await this.appService.getClient(name, ip);
+    return result;
   }
 }

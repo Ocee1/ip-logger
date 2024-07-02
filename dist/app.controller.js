@@ -23,9 +23,10 @@ let AppController = class AppController {
     welcome(ip) {
         return `This page is active! your IP ${ip}`;
     }
-    getQuery(query, ip) {
+    async getQuery(query, ip) {
         const name = query.visitor_name;
-        return this.appService.getClient(name, ip);
+        const result = await this.appService.getClient(name, ip);
+        return result;
     }
 };
 exports.AppController = AppController;

@@ -48,7 +48,7 @@ export class AppService {
 
       return data;
     } catch (error) {
-
+      
       throw new Error(`Error fetching weather data for IP ${ip}: ${error.message}`);
     }
   }
