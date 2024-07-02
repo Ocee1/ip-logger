@@ -46,7 +46,7 @@ __decorate([
     __metadata("design:returntype", String)
 ], AppController.prototype, "welcome", null);
 __decorate([
-    (0, common_1.Get)(),
+    (0, common_1.Get)('live'),
     __param(0, (0, common_1.Query)()),
     __param(1, (0, common_1.Ip)()),
     __metadata("design:type", Function),

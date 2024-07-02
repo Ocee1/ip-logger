@@ -15,7 +15,7 @@ export class AppController {
     return `this page is active!`
   }
 
-  @Get()
+  @Get('live')
   getQuery(@Query() query: any, @Ip() ip: string): Promise<any> {
     const name = query.visitor_name;
     console.log('just testing: ', this.appService.getClient(name, ip))
